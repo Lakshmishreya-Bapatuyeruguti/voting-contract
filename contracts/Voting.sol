@@ -5,6 +5,7 @@ contract Voting{
     address electionOrganizer;
     uint id=1;
     bool electionStarted=false;
+    bool electionEnded=false;
     struct Candidate{
         uint candidateId;
         string candidateName;
@@ -22,7 +23,6 @@ contract Voting{
         address voterAddress;
         uint voterAge;
         uint votedTo;
-        uint voterAdded;
         bool hasVoted;
     }
     address[] public allVoterAddresses;
@@ -37,18 +37,16 @@ contract Voting{
         _;
         require(msg.sender==electionOrganizer,"Only election organizer is allowed");
     }
-      modifier voterIsAllowed(address _address){
-        _;
-        require(voters[_address].voterAdded==1,"Not a valid voter");
-    }
     modifier electionHasStarted(){
         _;
         require(electionStarted,"Election not started yet");
     }
+  
     function startVoting() public isElectionOrganizer{
         electionStarted=true;
     }
        function endVoting() public isElectionOrganizer{
+        electionEnded=true;
         electionStarted=false;
     }
     function setCandidate(string memory _name, uint _age, string memory _partyName, address _address) public isElectionOrganizer{
@@ -67,17 +65,30 @@ contract Voting{
         voter.voterId=id;
         voter.voterName=_name;
         voter.voterAge=_age;
-        voter.voterAdded=1;
         voter.voterAddress=_address;
         voter.hasVoted=false;
         allVoterAddresses.push(_address);
     }   
-    function voteTo(uint _candidateId, address _candidateAddress) public voterIsAllowed(msg.sender) electionHasStarted{
+    function voteTo(uint _candidateId, address _candidateAddress) public electionHasStarted{
         Voter storage voter=voters[msg.sender];
         voter.votedTo=_candidateId;
-        candidates[_candidateAddress].votesRececieved+=voter.voterAdded;
-        voter.voterAdded=0;
+        require(!voter.hasVoted,"Already Voted");
+        require(msg.sender!=electionOrganizer,"Organizer can't vote");
+        candidates[_candidateAddress].votesRececieved+=1;
         voter.hasVoted=true;
         votedList.push(msg.sender);
+    }
+    function getWinner() public view  returns (Candidate memory) {
+        uint256 winningVoteCount = 0;
+        uint256 winningCandidateIndex = 0;
+        require(electionEnded,"Election didn't end");
+        for (uint256 i = 0; i < allCandidateAddresses.length; i++) {
+            if (candidates[allCandidateAddresses[i]].votesRececieved > winningVoteCount) {
+                winningVoteCount = candidates[allCandidateAddresses[i]].votesRececieved;
+                winningCandidateIndex = i;
+            }
+        }  
+
+        return candidates[allCandidateAddresses[winningCandidateIndex]];
     }
 }

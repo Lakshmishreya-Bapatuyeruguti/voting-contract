@@ -123,6 +123,51 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getWinner",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "candidateId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "candidateName",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "candidateAge",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "partyName",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "candiadateAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "votesRececieved",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Voting.Candidate",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -230,11 +275,6 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "uint256",
-						"name": "voterAdded",
-						"type": "uint256"
-					},
-					{
 						"internalType": "bool",
 						"name": "hasVoted",
 						"type": "bool"
@@ -272,11 +312,11 @@
 	},
 	"sources": {
 		"contracts/Voting.sol": {
-			"keccak256": "0x74998f9e9f8197fb844fd711565d96c05cbec4d40aa619085a842bc164ddee4d",
+			"keccak256": "0x83b7a58b51236b0c1332e78e87f6dab34cdc4628f7c52d2659b26c5cfb421c5c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d1b4c369792d5d65ae03e1ffc3dba8287b4c8e6fd2910b974b47ddf4ec91e171",
-				"dweb:/ipfs/QmadyTKu78783xGKKrJ88EUN8MCggrukuui5EuHEXAvFYq"
+				"bzz-raw://9bae20dc89ff5235e9c72abf451b33b1b719b428ca04f45ef44bf04f37aa80e4",
+				"dweb:/ipfs/QmcwX4gmnwQUGsq6PvJGWZNgdVZGvZz1bnkMVuehRtvhuE"
 			]
 		}
 	},
