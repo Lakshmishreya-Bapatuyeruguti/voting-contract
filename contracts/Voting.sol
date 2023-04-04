@@ -60,6 +60,7 @@ contract Voting{
         allCandidateAddresses.push(_address);
     }
     function addVoter(string memory _name,uint _age,address _address) public isElectionOrganizer{
+        require(_age>=18,"Not eligible to vote");
         id=id+1;
         Voter storage voter = voters[_address];
         voter.voterId=id;

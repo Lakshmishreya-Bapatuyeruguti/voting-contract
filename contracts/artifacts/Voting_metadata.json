@@ -312,11 +312,11 @@
 	},
 	"sources": {
 		"contracts/Voting.sol": {
-			"keccak256": "0x83b7a58b51236b0c1332e78e87f6dab34cdc4628f7c52d2659b26c5cfb421c5c",
+			"keccak256": "0x069d8333c3e4145d3be4c25a1a311902f4fda032f34fcba34226d0b115a09746",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://9bae20dc89ff5235e9c72abf451b33b1b719b428ca04f45ef44bf04f37aa80e4",
-				"dweb:/ipfs/QmcwX4gmnwQUGsq6PvJGWZNgdVZGvZz1bnkMVuehRtvhuE"
+				"bzz-raw://fd6d0f82db0ee12b3f90ec9faeeece49121ebd7328f355aed0dcee6c5f242ac2",
+				"dweb:/ipfs/QmfPTp5yu4XcjaDqtyuaq35wPrN9U3hwkAccpQxwffzXQa"
 			]
 		}
 	},
